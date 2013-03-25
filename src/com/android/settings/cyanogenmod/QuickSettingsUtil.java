@@ -39,6 +39,16 @@ import static com.android.internal.util.cm.QSConstants.TILE_VOLUME;
 import static com.android.internal.util.cm.QSConstants.TILE_WIFI;
 import static com.android.internal.util.cm.QSConstants.TILE_WIFIAP;
 import static com.android.internal.util.cm.QSConstants.TILE_DESKTOPMODE;
+import static com.android.internal.util.cm.QSConstants.TILE_HYBRID;
+import static com.android.internal.util.cm.QSConstants.TILE_QUIETHOURS;
+
+import com.android.internal.telephony.PhoneConstants;
+import com.android.settings.R;
+
+import android.content.Context;
+import android.net.wimax.WimaxHelper;
+import android.provider.Settings;
+import android.telephony.TelephonyManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -85,6 +95,9 @@ public class QuickSettingsUtil {
         TILES.put(TILE_NFC, new QuickSettingsUtil.TileInfo(
                 TILE_NFC, R.string.title_tile_nfc,
                 "com.android.systemui:drawable/ic_qs_nfc_off"));
+        TILES.put(TILE_QUIETHOURS, new QuickSettingsUtil.TileInfo(
+                TILE_QUIETHOURS, R.string.title_tile_quiet_hours,
+                "com.android.systemui:drawable/ic_qs_quiet_hours_off"));       
         TILES.put(TILE_SETTINGS, new QuickSettingsUtil.TileInfo(
                 TILE_SETTINGS, R.string.title_tile_settings,
                 "com.android.systemui:drawable/ic_qs_settings"));
@@ -117,7 +130,13 @@ public class QuickSettingsUtil {
                 "com.android.systemui:drawable/ic_qs_default_user"));
         TILES.put(TILE_DESKTOPMODE, new QuickSettingsUtil.TileInfo(
                 TILE_DESKTOPMODE, R.string.title_tile_desktop_mode,
-                "com.android.systemui:drawable/ic_qs_expanded_desktop"));
+                "com.android.systemui:drawable/ic_qs_expanded_desktop_off"));
+        TILES.put(TILE_HYBRID, new QuickSettingsUtil.TileInfo(
+                TILE_HYBRID, R.string.title_tile_hybrid,
+                "com.android.systemui:drawable/ic_qs_hybrid"));
+        TILES.put(TILE_NETWORKMODE, new QuickSettingsUtil.TileInfo(
+                TILE_NETWORKMODE, R.string.title_tile_networkmode,
+                "com.android.systemui:drawable/ic_qs_2g3g_on"));
     }
 
     public static String getCurrentTiles(Context context) {
